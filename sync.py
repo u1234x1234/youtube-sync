@@ -23,7 +23,7 @@ def download():
                 '--socket-timeout', '10', '-i',
                 '--download-archive', '{}/downloaded.txt'.format(download_dir),
                 '--extract-audio', '--audio-format', 'mp3',
-                '-o', '{}/"%(title)s.%(ext)s"'.format(download_dir), url]
+                '-o', '{}/%(title)s.%(ext)s'.format(download_dir), url]
         check_call(args)
 
 

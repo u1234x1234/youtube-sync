@@ -1,8 +1,9 @@
-import schedule
-import time
-import yaml
 import os
+import time
 from subprocess import check_call
+
+import schedule
+import yaml
 
 ROOT_DOWNLOAD_DIR = '/downloads/'
 
@@ -27,8 +28,8 @@ def download():
         check_call(args)
 
 
-schedule.every(5).seconds.do(download)
+schedule.every(24).hours.do(download)
 
 while True:
     schedule.run_pending()
-    time.sleep(1) 
+    time.sleep(1)

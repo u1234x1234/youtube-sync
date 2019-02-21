@@ -1,4 +1,4 @@
-## What's this
+## youtube-sync
 
 Keep any YouTube playlists in sync with your local directory.
 
@@ -6,15 +6,22 @@ Keep any YouTube playlists in sync with your local directory.
 
 ## Usage
 
-Create `to_sync.yml` with the following format:
+Create `config.yml` with the following format:
 ```yaml
-- path: local_dir01
+# Download videos
+- name: local_dir01
   playlist_url: https://www.youtube.com/user/user01/videos
-- path: local_dir02
+# Download only audio
+- name: local_dir02
   playlist_url: https://www.youtube.com/user/user02/videos
+  args: --extract-audio --audio-format mp3 --audio-quality 0 # best quality
 ```
 
-Then run a docker image:
+[Available args](https://github.com/rg3/youtube-dl/blob/master/README.md#post-processing-options)
+
+
+Then run a docker image (daemon):
 ```bash
-docker run -t -d -i -v $PWD/do:/downloads -v $PWD/to_sync.yml:/to_sync.yml youtube-sync
+mkdir downloads
+docker run -t -d -i -v $PWD/downloads:/downloads -v $PWD/config.yml:/config.yml youtube-sync
 ```

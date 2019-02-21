@@ -4,8 +4,8 @@ LABEL maintainer="u1234x1234@gmail.com"
 ENV USERNAME downloader
 ENV OUTPUT_DIRECTORY /downloads
 
-RUN apk add --no-cache ffmpeg
-RUN pip install youtube-dl schedule pyyaml
+RUN apk add --no-cache ffmpeg && \
+    pip install youtube-dl schedule pyyaml
 
 COPY sync.py /bin/sync.py
 RUN mkdir ${OUTPUT_DIRECTORY}

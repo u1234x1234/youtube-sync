@@ -1,3 +1,5 @@
+[![Docker Pulls](https://img.shields.io/docker/pulls/u1234x1234/youtube-sync.svg?style=flat-square)](https://hub.docker.com/r/u1234x1234/youtube-sync/)
+
 ## youtube-sync
 
 Keep any YouTube playlists in sync with your local directory.

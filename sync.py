@@ -30,7 +30,10 @@ def download():
                        '--download-archive', '{}/downloaded.txt'.format(download_dir)] + \
                        args.split(' ') + \
                        ['-o', '{}/%(title)s.%(ext)s'.format(download_dir), url]
-            check_call(command)
+            try:
+                check_call(command)
+            except Exception as e:
+                logging.exception(e)
 
     except Exception as e:
         logging.exception(e)

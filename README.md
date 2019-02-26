@@ -2,7 +2,7 @@
 
 ## youtube-sync
 
-`youtube-sync` is a containerized daemon that syncs a YouTube playlists with files stored in a local directory.
+`youtube-sync` is a containerized daemon that syncs YouTube playlists with files stored in a local directory.
 
 `youtube-sync` can download any YouTube playlists (audio or video).
 

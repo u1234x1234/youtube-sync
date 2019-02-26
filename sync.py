@@ -1,7 +1,7 @@
 import logging
 import os
 import time
-from subprocess import check_call
+from subprocess import check_output
 
 import schedule
 import yaml
@@ -31,7 +31,8 @@ def download():
                        args.split(' ') + \
                        ['-o', '{}/%(title)s.%(ext)s'.format(download_dir), url]
             try:
-                check_call(command)
+                command_output = check_output(command)
+                logging.debug(command_output)
             except Exception as e:
                 logging.exception(e)
 

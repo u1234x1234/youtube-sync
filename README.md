@@ -1,6 +1,6 @@
 # youtube-sync
 
-[![Docker Pulls](https://img.shields.io/docker/build/u1234x1234/youtube-sync.svg?style=flat-square)](https://hub.docker.com/r/u1234x1234/youtube-sync/)
+[![Docker Pulls](https://img.shields.io/docker/cloud/build/u1234x1234/youtube-sync.svg?style=flat-square)](https://hub.docker.com/r/u1234x1234/youtube-sync/)
 
 * `youtube-sync` is a containerized daemon that downloads YouTube playlists.
 

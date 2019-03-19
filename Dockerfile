@@ -1,17 +1,19 @@
-FROM python:3.6-alpine
+FROM python:2.7-alpine
 
 LABEL maintainer="u1234x1234@gmail.com"
-ENV USERNAME downloader
+ENV USERNAME youtube_sync
 ENV OUTPUT_DIRECTORY /downloads
 
+COPY requirements.txt /tmp/requirements.txt
 RUN apk add --no-cache ffmpeg && \
-    pip install youtube-dl schedule pyyaml
+    pip install -r /tmp/requirements.txt && \
+    rm -rf /var/cache/apk/*
 
-COPY sync.py /bin/sync.py
+COPY youtube_sync.py /bin/youtube_sync.py
 RUN mkdir ${OUTPUT_DIRECTORY}
 
 RUN adduser -D ${USERNAME} && \
     chown -R ${USERNAME}:${USERNAME} ${OUTPUT_DIRECTORY}
 
 USER ${USERNAME}
-CMD ["python3", "/bin/sync.py"]
+CMD ["python", "/bin/youtube_sync.py"]

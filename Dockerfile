@@ -1,4 +1,4 @@
-FROM python:2.7-alpine
+FROM python:3.6-alpine
 
 LABEL maintainer="u1234x1234@gmail.com"
 ENV USERNAME youtube_sync

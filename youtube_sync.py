@@ -12,13 +12,13 @@ ROOT_DOWNLOAD_DIR = os.environ['OUTPUT_DIRECTORY'] # defined in Dockefile
 def download():
     try:
         with open('/config.yml', 'r') as in_file:
-            items = list(yaml.load_all(in_file))
+            items = list(yaml.load_all(in_file))[0]
         logging.info('Number of playlists: {}'.format(len(items)))
 
-        for item in items[0]:
+        for item in items:
             path = item['name']
             url = item['playlist_url']
-            args = item.get('args', '')
+            args = item.get('args', None)
 
             download_dir = os.path.join(ROOT_DOWNLOAD_DIR, path)
             if not os.path.exists(download_dir):
@@ -27,9 +27,11 @@ def download():
 
             command = ['youtube-dl', '-c',
                        '--socket-timeout', '10', '-i',
-                       '--download-archive', '{}/downloaded.txt'.format(download_dir)] + \
-                       args.split(' ') + \
-                       ['-o', '{}/%(title)s.%(ext)s'.format(download_dir), url]
+                       '--download-archive', '{}/downloaded.txt'.format(download_dir),
+                       '-o', '{}/%(title)s.%(ext)s'.format(download_dir), url]
+            if args:
+                command += args.split(' ')
+            logging.debug('Command to execute: [{}]'.format(command))
             try:
                 command_output = check_output(command)
                 logging.debug(command_output)
@@ -47,6 +49,7 @@ if __name__ == '__main__':
         datefmt='%Y-%m-%d %H:%M:%S',
     )
     schedule.every().day.do(download)
+    download()
 
     while True:
         schedule.run_pending()

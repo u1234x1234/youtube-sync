@@ -1,0 +1,7 @@
+# Audio only
+- name: tensorflow_channel_audio
+  playlist_url: https://www.youtube.com/channel/UC0rqucBdTuFTjJiefW5t-IQ/videos
+  args: --extract-audio --audio-format mp3 --audio-quality 0 # best quality
+# Video
+- name: tensorflow_channel_video
+  playlist_url: https://www.youtube.com/channel/UC0rqucBdTuFTjJiefW5t-IQ/videos

@@ -1,33 +1,44 @@
-[![Docker Pulls](https://img.shields.io/docker/pulls/u1234x1234/youtube-sync.svg?style=flat-square)](https://hub.docker.com/r/u1234x1234/youtube-sync/)
+# youtube-sync
 
-## youtube-sync
+[![Docker Pulls](https://img.shields.io/docker/build/u1234x1234/youtube-sync.svg?style=flat-square)](https://hub.docker.com/r/u1234x1234/youtube-sync/)
 
-`youtube-sync` is a containerized daemon that syncs YouTube playlists with files stored in a local directory.
+* `youtube-sync` is a containerized daemon that downloads YouTube playlists.
 
-`youtube-sync` can download any YouTube playlists (audio or video).
+* `youtube-sync` will check updates from the listed YouTube playlists each day, and downloads only new items.
 
-`youtube-sync` will check updates from the listed YouTube playlists each day.
+* `youtube-sync` can download any YouTube playlists in a specified format (audio or video).
+
 
 Essentially, it is containerized [youtube-dl](https://github.com/rg3/youtube-dl/), working on a schedule.
 
 ## Usage
 
-Create `config.yml` with the following format:
+* Create `config.yml` with the following content:
 ```yaml
-# Download videos
-- name: videos_of_user01
-  playlist_url: https://www.youtube.com/user/user01/videos
-# Download only audio
-- name: music_of_user02
-  playlist_url: https://www.youtube.com/user/user02/videos
+# Download audio only
+- name: tensorflow_channel_audio
+  playlist_url: https://www.youtube.com/channel/UC0rqucBdTuFTjJiefW5t-IQ/videos
   args: --extract-audio --audio-format mp3 --audio-quality 0 # best quality
+# or video
+- name: tensorflow_channel_video
+  playlist_url: https://www.youtube.com/channel/UC0rqucBdTuFTjJiefW5t-IQ/videos
 ```
 
-[Available args](https://github.com/rg3/youtube-dl/blob/master/README.md#post-processing-options)
-
-
-Then run a docker (daemon):
+* Then run docker:
 ```bash
 mkdir downloads
-docker run -t -d -i -v $PWD/downloads:/downloads -v $PWD/config.yml:/config.yml u1234x1234/youtube-sync:0.0.3
+docker run -d -v $PWD/downloads:/downloads -v $PWD/config.yml:/config.yml u1234x1234/youtube-sync:0.0.7
 ```
+
+Ouput:
+```
+42fc565304fdd289c53e158152a772e321becbe152eec256434027008c5ac5eb
+```
+
+* To view logs:
+```
+docker logs 42fc565304fdd289c53e158152a772e321becbe152eec256434027008c5ac5eb
+```
+
+
+### [Available args](https://github.com/rg3/youtube-dl/blob/master/README.md#post-processing-options)

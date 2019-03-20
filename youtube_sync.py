@@ -25,7 +25,7 @@ def download():
                 os.makedirs(download_dir)
                 logging.info('Directory {} created.'.format(download_dir))
 
-            command = ['youtube-dl', '-c',
+            command = ['youtube-dl', '-c', '--ignore-errors',
                        '--socket-timeout', '10', '-i',
                        '--download-archive', '{}/downloaded.txt'.format(download_dir),
                        '-o', '{}/%(title)s.%(ext)s'.format(download_dir), url]

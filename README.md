@@ -5,7 +5,7 @@
 
 * `youtube-sync` is a containerized daemon that downloads YouTube playlists.
 
-* `youtube-sync` will check updates from the listed YouTube playlists each day, and downloads only new items.
+* `youtube-sync` will check for updates from the listed YouTube playlists every day and download only new items.
 
 * `youtube-sync` can download any YouTube playlists in a specified format (audio or video).
 

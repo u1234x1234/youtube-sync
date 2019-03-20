@@ -34,7 +34,7 @@ def download():
             logging.debug('Command to execute: [{}]'.format(command))
             try:
                 command_output = check_output(command)
-                logging.debug(command_output)
+                logging.debug(command_output.decode())
             except Exception as e:
                 logging.exception(e)
 

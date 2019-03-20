@@ -28,7 +28,7 @@ Essentially, it is containerized [youtube-dl](https://github.com/rg3/youtube-dl/
 * Then run docker:
 ```bash
 mkdir downloads
-docker run -d -v $PWD/downloads:/downloads -v $PWD/config.yml:/config.yml u1234x1234/youtube-sync:0.0.7
+docker run -d -v $PWD/downloads:/downloads -v $PWD/config.yml:/config.yml u1234x1234/youtube-sync
 ```
 
 Ouput:

@@ -16,19 +16,19 @@ Essentially, it is containerized [youtube-dl](https://github.com/rg3/youtube-dl/
 
 * Create `config.yml` with the following content:
 ```yaml
-# Download audio only
+#Download audio only
 - name: tensorflow_channel_audio
   playlist_url: https://www.youtube.com/channel/UC0rqucBdTuFTjJiefW5t-IQ/videos
   args: --extract-audio --audio-format mp3 --audio-quality 0 # best quality
-# or video
+#or video
 - name: tensorflow_channel_video
   playlist_url: https://www.youtube.com/channel/UC0rqucBdTuFTjJiefW5t-IQ/videos
 ```
 
 * Then run docker:
-```bash
+```
 mkdir downloads
-docker run -d -v $PWD/downloads:/downloads -v $PWD/config.yml:/config.yml u1234x1234/youtube-sync:1.0.0
+docker run -d -v $PWD/downloads:/downloads -v $PWD/config.yml:/config.yml u1234x1234/youtube-sync:1.0.1
 ```
 
 Ouput:

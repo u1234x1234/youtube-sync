@@ -10,11 +10,11 @@ ROOT_DOWNLOAD_DIR = os.environ['OUTPUT_DIRECTORY'] # defined in Dockefile
 
 
 def download():
-    try:
-        with open('/config.yml', 'r') as in_file:
-            items = list(yaml.load_all(in_file))[0]
-        logging.info('Number of playlists: {}'.format(len(items)))
+    with open('/config.yml', 'r') as in_file:
+        items = list(yaml.load_all(in_file))[0]
+    logging.info('Number of playlists: {}'.format(len(items)))
 
+    try:
         for item in items:
             path = item['name']
             url = item['playlist_url']

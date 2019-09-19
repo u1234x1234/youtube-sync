@@ -2,6 +2,7 @@
 
 [![Docker Pulls](https://img.shields.io/docker/cloud/build/u1234x1234/youtube-sync.svg?style=flat-square)](https://hub.docker.com/r/u1234x1234/youtube-sync/)
 [![Size](https://images.microbadger.com/badges/image/u1234x1234/youtube-sync.svg)](https://hub.docker.com/r/u1234x1234/youtube-sync/)
+[![](https://images.microbadger.com/badges/version/u1234x1234/youtube-sync.svg)](https://microbadger.com/images/u1234x1234/youtube-sync "Get your own version badge on microbadger.com")
 
 * `youtube-sync` is a containerized daemon that downloads YouTube playlists.
 
@@ -28,7 +29,7 @@ Essentially, it is containerized [youtube-dl](https://github.com/rg3/youtube-dl/
 * Then run docker:
 ```
 mkdir downloads
-docker run -d -v $PWD/downloads:/downloads -v $PWD/config.yml:/config.yml u1234x1234/youtube-sync:1.0.1
+docker run -d -v $PWD/downloads:/downloads -v $PWD/config.yml:/config.yml u1234x1234/youtube-sync:1.0.3
 ```
 
 Ouput:

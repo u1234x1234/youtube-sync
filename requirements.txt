@@ -1,4 +1,4 @@
 pyyaml==5.1
 schedule==0.6.0
-youtube-dl-2021.2.4.1
+youtube-dl==2021.2.4.1
 

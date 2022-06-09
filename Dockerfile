@@ -5,8 +5,9 @@ ENV USERNAME youtube_sync
 ENV OUTPUT_DIRECTORY /downloads
 
 COPY requirements.txt /tmp/requirements.txt
-RUN apk add --no-cache ffmpeg && \
+RUN apk add --no-cache ffmpeg gcc musl-dev && \
     pip install -r /tmp/requirements.txt && \
+    apk del gcc musl-dev && \
     rm -rf /var/cache/apk/*
 
 COPY youtube_sync.py /bin/youtube_sync.py

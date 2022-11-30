@@ -1,7 +1,7 @@
 import logging
 import os
 import time
-from subprocess import check_output
+from subprocess import check_output, CalledProcessError, run
 
 import schedule
 import yaml
@@ -33,10 +33,10 @@ def download():
                 command += args.split(' ')
             logging.debug('Command to execute: [{}]'.format(command))
             try:
-                command_output = check_output(command)
-                logging.debug(command_output.decode())
-            except Exception as e:
-                logging.exception(e)
+                check_output(command)
+            except CalledProcessError as exc:
+                command_str = ' '.join(command)
+                logging.info(f'Command "{command_str}" completed with return code {exc.returncode}')
 
     except Exception as e:
         logging.exception(e)

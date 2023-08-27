@@ -29,7 +29,7 @@ Essentially, it is Docker containerized [yt-dlp](https://github.com/yt-dlp/yt-dl
 * Then run docker:
 ```
 mkdir downloads
-docker run --name youtubesync --restart=always -d -v $PWD/downloads:/downloads -v $PWD/config.yml:/config.yml u1234x1234/youtube-sync:1.0.13
+docker run --name youtubesync --restart=always -d -v $PWD/downloads:/downloads -v $PWD/config.yml:/config.yml u1234x1234/youtube-sync:1.0.14
 ```
 All downloads will be available in the local dir `downloads`.
 
